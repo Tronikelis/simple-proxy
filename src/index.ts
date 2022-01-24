@@ -1,4 +1,4 @@
-import Fastify from "fastify";
+import Fastify, { RouteShorthandOptions as RouteOptions } from "fastify";
 import axios from "axios";
 import cors from "fastify-cors";
 
@@ -8,7 +8,25 @@ const fastify = Fastify({
 
 fastify.register(cors);
 
-fastify.get("/", async (req, res) => {
+const options: RouteOptions = {
+    schema: {
+        querystring: {
+            type: "object",
+            properties: {
+                url: {
+                    type: "string",
+                },
+            },
+        },
+        response: {
+            200: {
+                type: "string",
+            },
+        },
+    },
+};
+
+fastify.get("/", options, async (req, res) => {
     const { url } = req.query as { [key: string]: string };
 
     let parsed;
