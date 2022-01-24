@@ -1,0 +1,17 @@
+name: "Deploy to dokku"
+
+on: workflow_dispatch
+
+jobs:
+    deploy:
+        runs-on: ubuntu-latest
+
+        steps:
+            - name: Deploy to dokku
+              uses: vitalyliber/dokku-github-action@v6.2
+              env:
+                  PRIVATE_KEY: ${{ secrets.SECRET }}
+                  FORCE_DEPLOY: true
+                  BRANCH: master
+                  HOST: ${{ secrets.SERVER_IP }}
+                  PROJECT: simple-proxy
