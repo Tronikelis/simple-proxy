@@ -50,7 +50,7 @@ fastify.get("/", options, async (req, res) => {
     }
 });
 
-fastify.listen(process.env.PORT || 3000, (err, address) => {
+fastify.listen(process.env.PORT || 3000, "0.0.0.0", (err, address) => {
     if (err) {
         console.error(err);
         process.exit(1);
