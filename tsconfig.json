@@ -1,0 +1,24 @@
+{
+    "ts-node": {
+        "files": true
+    },
+    "compilerOptions": {
+        "baseUrl": "./src",
+        "outDir": "./dist",
+        "rootDir": "./src",
+        "target": "ES2020",
+        "module": "commonjs",
+        "lib": ["es2017", "es7", "es6", "ESNext", "DOM"],
+        "strict": true,
+        "esModuleInterop": true,
+        "noImplicitAny": true,
+        "skipLibCheck": true,
+        "paths": {
+            "@middleware": ["./src/middleware"],
+            "@mongo": ["./src/mongo"],
+            "@typings": ["./src/typings"]
+        }
+    },
+    "include": ["./src"],
+    "exclude": ["node_modules"]
+}
