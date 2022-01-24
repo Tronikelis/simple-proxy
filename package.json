@@ -3,7 +3,7 @@
     "version": "1.0.0",
     "scripts": {
         "dev": "cd src && ts-node-dev index.ts",
-        "start": "node dist",
+        "prod": "node dist",
         "build": "tsc"
     },
     "devDependencies": {
