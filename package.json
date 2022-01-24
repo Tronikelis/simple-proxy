@@ -1,6 +1,9 @@
 {
     "name": "simple-proxy",
     "version": "1.0.0",
+    "engines": {
+        "node": "<17"
+    },
     "scripts": {
         "dev": "cd src && ts-node-dev index.ts",
         "prod": "node dist",
