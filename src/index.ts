@@ -39,6 +39,13 @@ fastify.get("/", options, async (req, res) => {
         };
     }
 
+    if (parsed.pathname.includes(".")) {
+        throw {
+            status: 400,
+            message: "Urls should not include dots (.)",
+        };
+    }
+
     try {
         const { data } = await axios.get(parsed.href);
         return data;
