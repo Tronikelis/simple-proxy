@@ -18,11 +18,6 @@ const options: RouteOptions = {
                 },
             },
         },
-        response: {
-            200: {
-                type: "string",
-            },
-        },
     },
 };
 
