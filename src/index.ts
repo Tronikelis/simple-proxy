@@ -12,11 +12,10 @@ fastify.register(fastifyRateLimit, {
     max: 500,
     timeWindow: 1000 * 60,
     allowList: ["127.0.0.1"],
-    keyGenerator: req => (
-        req.headers["cf-connecting-ip"], // cloudflare
-        req.headers["x-forwarded-for"], // nginx
-        req.ip
-    ),
+    keyGenerator: req =>
+        req.headers["cf-connecting-ip"]?.toString() || // cloudflare
+        req.headers["x-forwarded-for"]?.toString() || // nginx
+        req.ip,
 });
 
 const options: RouteOptions = {
