@@ -1,12 +1,23 @@
 import Fastify, { RouteShorthandOptions as RouteOptions } from "fastify";
 import axios from "axios";
 import cors from "fastify-cors";
+import fastifyRateLimit from "fastify-rate-limit";
 
 const fastify = Fastify({
     logger: true,
 });
 
 fastify.register(cors);
+fastify.register(fastifyRateLimit, {
+    max: 500,
+    timeWindow: 1000 * 60,
+    allowList: ["127.0.0.1"],
+    keyGenerator: req => (
+        req.headers["cf-connecting-ip"], // cloudflare
+        req.headers["x-forwarded-for"], // nginx
+        req.ip
+    ),
+});
 
 const options: RouteOptions = {
     schema: {
